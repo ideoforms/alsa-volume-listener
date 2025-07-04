@@ -1,0 +1,17 @@
+#--------------------------------------------------------------------------------
+# systemd service file for alsa-volume-listener
+#--------------------------------------------------------------------------------
+
+[Unit]
+Description=Alsa OSC volume listener
+After=sound.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/home/pi/alsa-volume-listener/.venv/bin/python3 run-volume-listener.py
+WorkingDirectory=/home/pi/alsa-volume-listener
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
